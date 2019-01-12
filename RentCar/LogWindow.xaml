@@ -1,0 +1,171 @@
+﻿<Window x:Class="RentCar.LogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RentCar"
+        mc:Ignorable="d"
+        Title="RentCar" Height="480" Width="640" 
+        AllowsTransparency="False" Icon="Resources/appIcon.png" WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize" ShowInTaskbar="True">
+
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="2,2">
+            <GradientStop Color="#70116B" Offset="0" />
+            <GradientStop Color="White" Offset="0.52" />
+            <GradientStop Color="White" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Control.FontSize" Value="16" />
+            <Setter Property="Control.FontFamily" Value="Do Hyeon"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Control.FontSize" Value="14" />
+            <Setter Property="Control.FontFamily" Value="Do Hyeon"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="360"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <ScrollViewer Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,316.6,0">
+            <StackPanel>
+                <Button Height="Auto" Width="Auto" Background="#BE6AB5" Click="audiButton_Click">
+                    <Image Source="Resources/Logos/audi.png" Height="120" Width="199"/>
+                </Button>
+                <Button Background="#B264AA">
+                    <Image Source="Resources/Logos/merc.png" Height="120" Width="213"/>
+                </Button>
+                <Button Background="#A05799">
+                    <Image Source="Resources/Logos/bmw.png" Height="107" Width="136"/>
+                </Button>
+                <Button Background="#B264AA">
+                    <Image Source="Resources/Logos/honda.png" Height="120" Width="247"/>
+                </Button>
+                <Button Background="#BE6AB5">
+                    <Image Source="Resources/Logos/vw.png" Height="120" Width="236"/>
+                </Button>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Button x:Name="userProfile" Grid.Row="1" Grid.Column="0"
+                FontFamily="Do Hyeon" FontSize="20"
+                Width="127" Height="39"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="User profile"
+                Click="userProfileButton_Click" IsDefault="True"
+                Background="AliceBlue" Margin="10,31,179.8,20.4" >
+
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="buttonBorder" CornerRadius="25"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Background="{TemplateBinding Background}"
+                Height="{TemplateBinding Height}"
+                Width="{TemplateBinding Width}" >
+                        <ContentControl Margin="{TemplateBinding Padding}"
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                    Content="{TemplateBinding Content}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="buttonBorder" Property="Background" Value="Azure" />
+                            <Setter TargetName="buttonBorder" Property="BorderBrush" Value="DarkBlue" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="Gray"/>
+                            <Setter TargetName="buttonBorder" Property="Background" Value="LightGray"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+
+        </Button>
+
+        <Button x:Name="addButton" Grid.Row="1" Grid.Column="0"
+                FontFamily="Do Hyeon" FontSize="20"
+                Width="30" Height="28"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Content="+"
+                IsDefault="True" Click="addButton_Click"
+                Background="AliceBlue" Margin="0,36,34.8,26.4" />
+
+        <Button x:Name="delButton" Grid.Row="1" Grid.Column="0"
+                FontFamily="Do Hyeon" FontSize="20"
+                Width="30" Height="28"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="-"
+                IsDefault="True" Click="delButton_Click"
+                Background="AliceBlue" Margin="287,36,316.6,26.4" Grid.ColumnSpan="2" />
+
+        <Button x:Name="userListButton" Grid.Row="1" Grid.Column="0"
+                FontFamily="Do Hyeon" FontSize="20"
+                Width="95" Height="28"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="User list"
+                IsDefault="True" Click="clickDo"
+                Background="AliceBlue" Margin="152,36,69.8,26.4" />
+
+        <Button x:Name="backButton" Grid.Column="1" Grid.Row="1"
+                FontFamily="Do Hyeon" FontSize="20"
+                Width="62" Height="39"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Exit"
+                Click="backButton_Click" IsDefault="True"
+                Background="AliceBlue" Margin="235.2,31,19.6,20.4" >
+
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="buttonBorder" CornerRadius="25"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Background="{TemplateBinding Background}"
+                Height="{TemplateBinding Height}"
+                Width="{TemplateBinding Width}" >
+                        <ContentControl Margin="{TemplateBinding Padding}"
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                    Content="{TemplateBinding Content}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="buttonBorder" Property="Background" Value="Azure" />
+                            <Setter TargetName="buttonBorder" Property="BorderBrush" Value="DarkBlue" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="Gray"/>
+                            <Setter TargetName="buttonBorder" Property="Background" Value="LightGray"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+
+        </Button>
+
+
+    </Grid>
+</Window>
